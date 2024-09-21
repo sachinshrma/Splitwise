@@ -1,6 +1,7 @@
 package model;
 
 import strategy.EqualSplitStrategy;
+import strategy.ExactSplitStrategy;
 import strategy.PercentSplitStrategy;
 import strategy.SplitStrategy;
 
@@ -31,6 +32,9 @@ public class Expense {
                 break;
             case PERCENT:
                 this.splitStrategy = new PercentSplitStrategy(this);
+                break;
+            case EXACT:
+                this.splitStrategy = new ExactSplitStrategy(this);
                 break;
             default:
                     throw new RuntimeException("Invalid split type");

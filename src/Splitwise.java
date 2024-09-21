@@ -51,6 +51,17 @@ public class Splitwise {
         balanceService.showBalance(user2);
         balanceService.showBalance(user3);
 
+        split1.setValue(25);
+        split2.setValue(5);
+        split3.setValue(70);
+        expenseService.addExpense(group, "Blinkit", user1, SplitTypeEnum.EXACT, List.of(split1, split2, split3), 100);
+
+        System.out.println("-----------------------");
+
+        balanceService.showBalance(user1);
+        balanceService.showBalance(user2);
+        balanceService.showBalance(user3);
+
 
     }
 }
