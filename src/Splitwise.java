@@ -36,6 +36,8 @@ public class Splitwise {
 
         expenseService.addExpense(null, "Zepto", user1, SplitTypeEnum.EQUAL, List.of(split1, split2), 400);
 
+        expenseService.addExpense(group, "Zomato", user1, SplitTypeEnum.EQUAL, List.of(split1, split2), 400);
+
         expenseService.showExpenses(user1);
         expenseService.showExpenses(group);
     }
