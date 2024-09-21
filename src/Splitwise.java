@@ -13,7 +13,7 @@ public class Splitwise {
     public static void main(String[] args) {
         UserService userService = new UserService();
         GroupService groupService = new GroupService();
-        BalanceService balanceService = new BalanceService();
+        BalanceService balanceService = new BalanceService(userService);
         ExpenseService expenseService = new ExpenseService(balanceService);
 
         User user1 = userService.createUser("Sachin", "sachin@gmail.com");
@@ -35,10 +35,22 @@ public class Splitwise {
         balanceService.showBalance(user3);
 
         expenseService.addExpense(null, "Zepto", user1, SplitTypeEnum.EQUAL, List.of(split1, split2), 400);
-
         expenseService.addExpense(group, "Zomato", user1, SplitTypeEnum.EQUAL, List.of(split1, split2), 400);
 
-        expenseService.showExpenses(user1);
-        expenseService.showExpenses(group);
+        System.out.println("-----------------------");
+
+        balanceService.showBalance(user1);
+        balanceService.showBalance(user2);
+        balanceService.showBalance(user3);
+
+        balanceService.settleBalance(user1, user3);
+
+        System.out.println("-----------------------");
+
+        balanceService.showBalance(user1);
+        balanceService.showBalance(user2);
+        balanceService.showBalance(user3);
+
+
     }
 }
